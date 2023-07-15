@@ -7,11 +7,14 @@
 ├── apidoc              ---------> api 문서 작성
 │   └── apidoc.json     ---------> api 문서 설정 파일
 ├── config              ---------> 서버 설정
-│   ├── config.js       ---------> 서버 설정 파일
-│   └── mysql.config.js ---------> mysql 설정 파일
+│   └── config.js       ---------> 설정 파일
+├── models              ---------> 데이터베이스 entity
+│   ├── index.js        ---------> model 인덱스 파일
+│   └── directories     ---------> 각 entity들이 들어있는 디렉토리
 ├── package-lock.json
 ├── package.json
 ├── server.js           ---------> 서버 인덱스 파일
+├── server.config.js    ---------> 서버 환경 파일
 ├── src
 │   ├── api             ---------> 컨트롤러, 서비스, 레포지토리를 관리하는 폴더
 │   ├── index.js        ---------> api router 인덱스 파일
