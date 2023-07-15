@@ -1,6 +1,7 @@
 module.exports = {
     // server config
     PORT: process.env.PORT,
+    ENV: process.env.ENV,
 
     // db config
     MYSQL_HOST: process.env.MYSQL_HOST,
