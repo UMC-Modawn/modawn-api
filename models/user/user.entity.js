@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
             unique: true,
         },
         encryptedPassword: {
-            type: DataTypes.STRING(256), // SHA256
+            type: DataTypes.STRING(64), // SHA256
             allowNull: false,
         },
         createdDate: {
@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         modifiedDate: {
             type: DataTypes.DATE,
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         }
     }, {
         tableName: 'user',

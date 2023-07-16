@@ -10,13 +10,15 @@
 │   └── config.js       ---------> 설정 파일
 ├── models              ---------> 데이터베이스 entity
 │   ├── index.js        ---------> model 인덱스 파일
-│   └── directories     ---------> 각 entity들이 들어있는 디렉토리
+│   └── entities        ---------> 각 entity들이 들어있는 디렉토리들
 ├── package-lock.json
 ├── package.json
 ├── server.js           ---------> 서버 인덱스 파일
 ├── server.config.js    ---------> 서버 환경 파일
 ├── src
 │   ├── api             ---------> 컨트롤러, 서비스, 레포지토리를 관리하는 폴더
+│   ├── error           ---------> 에러 관리 폴더
+│   ├── middleware      ---------> 미들웨어 폴더
 │   ├── index.js        ---------> api router 인덱스 파일
 │   └── util.js         ---------> api router 유틸 파일
 └── .env.example        ---------> 환경변수 설정 파일 (.env로 복사하여 사용)
