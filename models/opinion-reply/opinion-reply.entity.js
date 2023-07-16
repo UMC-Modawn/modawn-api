@@ -31,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
         modifiedDate: {
             type: DataTypes.DATE,
             allowNull: false,
+            defaultValue: DataTypes.NOW,
         }
     }, {
         tableName: 'opinion_reply',
