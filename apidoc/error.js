@@ -32,9 +32,9 @@
  */
 
 /**
- * @apiDefine NotFoundUserForLogin
- * @apiError NotFoundUserForLogin 아이디 또는 비밀번호가 일치하지 않습니다.
- * @apiErrorExample {json} NotFoundUserForLogin
+ * @apiDefine NotMatchLoginInfo
+ * @apiError NotMatchLoginInfo 아이디 또는 비밀번호가 일치하지 않습니다.
+ * @apiErrorExample {json} NotMatchLoginInfo
  * HTTP/1.1 400 Bad Request
  * {
  *     "success": false,
