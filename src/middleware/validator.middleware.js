@@ -1,5 +1,5 @@
-const { validationResult } = require("express-validator");
-const { responseFailedWrapper } = require("../util");
+const { validationResult } = require('express-validator');
+const { responseFailedWrapper } = require('../util');
 
 exports.validatorCheckerMiddleware = (req, res, next) => {
     const errors = validationResult(req);
