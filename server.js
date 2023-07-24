@@ -28,6 +28,6 @@ sequelize.sync({ force: config.ENV === Environment.DEVELOPMENT })
 app.use(logger('dev'));
 app.use(express.json());
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors());
 
 app.use('/api', require('./src'));
