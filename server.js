@@ -25,7 +25,7 @@ sequelize.sync({ force: config.ENV === Environment.DEVELOPMENT })
         console.error(err);
     });
 
-app.use(logger('dev'));
+app.use(logger(config.ENV === Environment.DEVELOPMENT ? 'dev' : 'combined'));
 app.use(express.json());
 
 app.use(cors());
