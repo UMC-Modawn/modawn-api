@@ -7,6 +7,7 @@ const logger = require('morgan');
 const config = require('./config/config');
 const { sequelize } = require('./models');
 const { Environment } = require("./server.constant");
+const cors = require("cors");
 
 sequelize.sync({ force: config.ENV === Environment.DEVELOPMENT })
     .then(() => {
@@ -26,5 +27,7 @@ sequelize.sync({ force: config.ENV === Environment.DEVELOPMENT })
 
 app.use(logger('dev'));
 app.use(express.json());
+
+app.use(cors({ origin: true, credentials: true }));
 
 app.use('/api', require('./src'));
