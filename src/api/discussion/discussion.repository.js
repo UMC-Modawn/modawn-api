@@ -31,6 +31,7 @@ exports.getDiscussions = async (query) => {
                 where: discussionCategoryJoinWhere,
             },
             { model: db.User },
+            { model: db.DiscussionLike },
         ],
         where,
         ...pagination,
