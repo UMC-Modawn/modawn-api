@@ -20,7 +20,7 @@
  */
 
 /**
- * @api {get} /user/login 02. 유저 로그인
+ * @api {post} /user/login 02. 유저 로그인
  * @apiDescription 유저 로그인을 진행합니다.
  * @apiName LoginUser
  * @apiGroup User
