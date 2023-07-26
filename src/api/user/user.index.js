@@ -6,6 +6,6 @@ const { userRegisterValidator, userLoginValidator } = require("./user.validator"
 const { validatorCheckerMiddleware } = require("../../middleware/validator.middleware");
 
 router.post('/register', userRegisterValidator, validatorCheckerMiddleware, userRegister);
-router.get('/login', userLoginValidator, validatorCheckerMiddleware, userLogin);
+router.post('/login', userLoginValidator, validatorCheckerMiddleware, userLogin);
 
 module.exports = router;
