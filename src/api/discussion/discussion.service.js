@@ -44,3 +44,12 @@ exports.getDiscussionByIdx = async (user, idx) => {
         discussionLikeCount,
     };
 }
+
+exports.getExistDiscussionByIdx = async (idx) => {
+    const discussion = await discussionRepository.getDiscussion(idx);
+    if (!discussion) {
+        throw new RequestException('존재하지 않는 토론입니다.', HttpStatus.BAD_REQUEST);
+    }
+
+    return discussion;
+}
