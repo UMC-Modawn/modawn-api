@@ -4,6 +4,8 @@ const RequestException = require("../../error/request.exception");
 const opinionService = require('../opinion/opinion.service');
 const discussionLikeService = require('../discussion-like/discussion-like.service');
 const { OpinionType } = require("../../../models/opinion/opinion.constant");
+const { DiscussionStatus } = require("../../../models/discussion/discussion.constant");
+const discussionCategoryService = require('../discussion-category/discussion-category.service');
 
 exports.getDiscussions = async (query) => {
     const { count, rows } = await discussionRepository.getDiscussions(query);
@@ -50,6 +52,26 @@ exports.getExistDiscussionByIdx = async (idx) => {
     if (!discussion) {
         throw new RequestException('존재하지 않는 토론입니다.', HttpStatus.BAD_REQUEST);
     }
+
+    return discussion;
+}
+
+exports.addDiscussion = async (user, body) => {
+    const category = await discussionCategoryService.getDiscussionCategoryByIdx(body.categoryIdx);
+
+    const discussion = discussionRepository.createInstance({
+        userIdx: user.idx,
+        title: body.title,
+        content: body.content,
+        categoryIdx: category.idx,
+        status: DiscussionStatus.DISCUSS,
+        url: body.url,
+        imgUrl: body.imgUrl,
+        startDate: new Date().toISOString(),
+        endDate: body.endDate,
+    });
+
+    await discussion.save();
 
     return discussion;
 }

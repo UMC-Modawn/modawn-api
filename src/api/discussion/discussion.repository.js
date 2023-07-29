@@ -1,5 +1,9 @@
 const db = require('../../../models');
 
+exports.createInstance = (body) => {
+    return db.Discussion.build(body);
+}
+
 exports.getDiscussions = async (query) => {
     /** where clause */
     const where = {};
@@ -49,4 +53,8 @@ exports.getDiscussion = (discussionIdx) => {
         ],
         where: { idx: discussionIdx },
     })
+}
+
+exports.addDiscussion = async (discussion) => {
+    return db.Discussion.create(discussion);
 }

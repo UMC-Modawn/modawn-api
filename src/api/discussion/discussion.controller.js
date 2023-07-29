@@ -32,7 +32,8 @@ exports.addDiscussionLike = async (req, res) => {
 
 exports.addDiscussion = async (req, res) => {
     try {
-
+        await discussionService.addDiscussion(req.user, req.body);
+        return res.status(HttpStatus.CREATED).json(responseSuccessWrapper());
     } catch (e) {
         processCatchBlock(e, res);
 
