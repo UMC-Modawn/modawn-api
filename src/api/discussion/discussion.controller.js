@@ -1,4 +1,4 @@
-const { responseFailedWrapper, responseSuccessWrapper} = require("../../util");
+const { responseSuccessWrapper, processCatchBlock } = require("../../util");
 const discussionService = require("./discussion.service");
 const discussionLikeService = require('../discussion-like/discussion-like.service');
 const { HttpStatus } = require("../../error/error.constant");
@@ -8,8 +8,7 @@ exports.getDiscussions = async (req, res) => {
         const discussions = await discussionService.getDiscussions(req.query);
         res.status(HttpStatus.OK).json(responseSuccessWrapper(discussions));
     } catch (e) {
-        console.error(e);
-        res.status(e.status).json(responseFailedWrapper(e.message));
+        processCatchBlock(e, res);
     }
 }
 
@@ -18,8 +17,7 @@ exports.getDiscussionByIdx = async (req, res) => {
         const discussion = await discussionService.getDiscussionByIdx(req.user, req.params.idx);
         res.status(HttpStatus.OK).json(responseSuccessWrapper(discussion));
     } catch (e) {
-        console.error(e);
-        res.status(e.status).json(responseFailedWrapper(e.message));
+        processCatchBlock(e, res);
     }
 }
 
@@ -28,7 +26,15 @@ exports.addDiscussionLike = async (req, res) => {
         await discussionLikeService.addDiscussionLike(req.user.idx, req.params.idx);
         return res.status(HttpStatus.CREATED).json(responseSuccessWrapper());
     } catch (e) {
-        console.error(e);
-        res.status(e.status).json(responseFailedWrapper(e.message));
+        processCatchBlock(e, res);
+    }
+}
+
+exports.addDiscussion = async (req, res) => {
+    try {
+
+    } catch (e) {
+        processCatchBlock(e, res);
+
     }
 }

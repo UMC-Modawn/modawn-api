@@ -1,5 +1,6 @@
-const { responseSuccessWrapper, responseFailedWrapper } = require("../../util");
+const { responseSuccessWrapper, processCatchBlock } = require("../../util");
 const userService = require("./user.service");
+const { HttpStatus } = require("../../error/error.constant");
 
 exports.userRegister = async (req, res) => {
     const body = req.body;
@@ -7,9 +8,9 @@ exports.userRegister = async (req, res) => {
     try {
         await userService.userRegister(body);
 
-        res.status(201).json();
+        res.status(HttpStatus.CREATED).json();
     } catch (e) {
-        res.status(e.status).json(responseFailedWrapper(e.message));
+        processCatchBlock(e, res);
     }
 }
 
@@ -19,8 +20,8 @@ exports.userLogin = async (req, res) => {
     try {
         const result = await userService.login(body);
 
-        res.status(200).json(responseSuccessWrapper(result));
+        res.status(HttpStatus.OK).json(responseSuccessWrapper(result));
     } catch (e) {
-        res.status(e.status).json(responseFailedWrapper(e.message));
+        processCatchBlock(e, res);
     }
 }
