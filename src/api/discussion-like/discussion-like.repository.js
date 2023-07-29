@@ -7,3 +7,12 @@ exports.getDiscussionLikeCounts = async (discussionIdx) => {
         }
     });
 }
+
+exports.getDiscussionLike = async (userIdx, discussionIdx) => {
+    return db.DiscussionLike.findOne({
+        where: {
+            userIdx,
+            discussionIdx,
+        }
+    });
+}

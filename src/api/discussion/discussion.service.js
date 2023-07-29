@@ -21,11 +21,26 @@ exports.getDiscussions = async (query) => {
 }
 
 exports.getDiscussionByIdx = async (user, idx) => {
-    const discussion = await discussionRepository.getDiscussion(idx, user.idx);
+    const discussion = await discussionRepository.getDiscussion(idx);
     if (!discussion) {
         throw new RequestException('존재하지 않는 토론입니다.', HttpStatus.BAD_REQUEST);
     }
-    const opinions = await opinionService.getOpinions({ discussionIdx: idx, type: OpinionType.APPROVE });
-    console.log(opinions);
-    return discussion;
+
+    const userDiscussionLike = await discussionLikeService.isUserDiscussionLike(user.idx, idx);
+    const discussionLikeCount = await discussionLikeService.getDiscussionLikeCounts(idx);
+
+    const opinionApproves = await opinionService.getOpinionsOrderByLikeCount(idx, OpinionType.APPROVE);
+    const opinionDisapproves = await opinionService.getOpinionsOrderByLikeCount(idx, OpinionType.DISAPPROVE);
+    const opinionOthers = await opinionService.getOpinionsOrderByLikeCount(idx, OpinionType.OTHER);
+
+    return {
+        discussion: {
+            ...discussion.dataValues,
+            opinionApproves,
+            opinionDisapproves,
+            opinionOthers,
+        },
+        userDiscussionLike,
+        discussionLikeCount,
+    };
 }

@@ -41,21 +41,11 @@ exports.getDiscussions = async (query) => {
     });
 }
 
-exports.getDiscussion = (discussionIdx, userIdx) => {
+exports.getDiscussion = (discussionIdx) => {
     return db.Discussion.findOne({
         include: [
             { model: db.DiscussionCategory },
             { model: db.User },
-            {
-                model: db.DiscussionLike,
-                where: { userIdx }
-            },
-            // {
-            //     model: db.Opinion,
-            //     include: [
-            //         { model: db.OpinionLike },
-            //     ]
-            // }
         ],
         where: { idx: discussionIdx },
     })
