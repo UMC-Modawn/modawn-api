@@ -9,6 +9,8 @@ const { userAuthMiddleware } = require("../../middleware/user-auth.middleware");
 router.get('/', getDiscussionsValidator, validatorCheckerMiddleware, discussionController.getDiscussions);
 router.post('/', userAuthMiddleware, addDiscussionBodyValidator, validatorCheckerMiddleware, discussionController.addDiscussion);
 router.get('/:idx', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.getDiscussionByIdx);
+router.delete('/:idx', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.deleteDiscussion);
 router.post('/:idx/like', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.addDiscussionLike);
+router.put('/:idx/status', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.updateDiscussionStatus);
 
 module.exports = router;

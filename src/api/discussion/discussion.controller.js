@@ -39,3 +39,21 @@ exports.addDiscussion = async (req, res) => {
 
     }
 }
+
+exports.deleteDiscussion = async (req, res) => {
+    try {
+        await discussionService.deleteDiscussion(req.user, req.params.idx);
+        return res.status(HttpStatus.OK).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}
+
+exports.updateDiscussionStatus = async (req, res) => {
+    try {
+        await discussionService.updateDiscussionStatus(req.user, req.params.idx, req.body.status);
+        return res.status(HttpStatus.OK).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}

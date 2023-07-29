@@ -58,3 +58,11 @@ exports.getDiscussion = (discussionIdx) => {
 exports.addDiscussion = async (discussion) => {
     return db.Discussion.create(discussion);
 }
+
+exports.deleteDiscussion = async (discussion) => {
+    return discussion.destroy();
+}
+
+exports.updateDiscussion = async (discussion) => {
+    return discussion.save();
+}

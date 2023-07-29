@@ -75,3 +75,29 @@ exports.addDiscussion = async (user, body) => {
 
     return discussion;
 }
+
+exports.deleteDiscussion = async (user, discussionIdx) => {
+    const discussion = await this.getExistDiscussionByIdx(discussionIdx);
+
+    if (discussion.userIdx !== user.idx) {
+        throw new RequestException('삭제 권한이 없습니다.', HttpStatus.FORBIDDEN);
+    }
+
+    return discussionRepository.deleteDiscussion(discussion);
+}
+
+exports.updateDiscussionStatus = async (user, discussionIdx, status) => {
+    const discussion = await this.getExistDiscussionByIdx(discussionIdx);
+
+    if (discussion.userIdx !== user.idx) {
+        throw new RequestException('수정 권한이 없습니다.', HttpStatus.FORBIDDEN);
+    }
+
+    if (!Object.keys(DiscussionStatus).includes(status)) {
+        throw new RequestException('존재하지 않는 상태입니다.', HttpStatus.BAD_REQUEST);
+    }
+
+    discussion.status = status;
+
+    return discussionRepository.updateDiscussion(discussion);
+}
