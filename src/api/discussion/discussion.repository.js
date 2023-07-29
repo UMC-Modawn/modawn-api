@@ -35,5 +35,28 @@ exports.getDiscussions = async (query) => {
         ],
         where,
         ...pagination,
+        order: [
+            ['createdDate', 'DESC']
+        ]
     });
+}
+
+exports.getDiscussion = (discussionIdx, userIdx) => {
+    return db.Discussion.findOne({
+        include: [
+            { model: db.DiscussionCategory },
+            { model: db.User },
+            {
+                model: db.DiscussionLike,
+                where: { userIdx }
+            },
+            // {
+            //     model: db.Opinion,
+            //     include: [
+            //         { model: db.OpinionLike },
+            //     ]
+            // }
+        ],
+        where: { idx: discussionIdx },
+    })
 }

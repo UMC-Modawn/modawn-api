@@ -11,3 +11,13 @@ exports.getDiscussions = async (req, res) => {
         res.status(e.status).json(responseFailedWrapper(e.message));
     }
 }
+
+exports.getDiscussionByIdx = async (req, res) => {
+    try {
+        const discussion = await discussionService.getDiscussionByIdx(req.user, req.params.idx);
+        res.status(HttpStatus.OK).json(responseSuccessWrapper(discussion));
+    } catch (e) {
+        console.error(e);
+        res.status(e.status).json(responseFailedWrapper(e.message));
+    }
+}
