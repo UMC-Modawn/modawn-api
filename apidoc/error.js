@@ -93,3 +93,16 @@
  *     "message": "수정 권한이 없습니다."
  * }
  */
+
+/**
+ * @apiDefine NotExistOpinion
+ *
+ * @apiError NotExistOpinion 존재하지 않는 의견입니다.
+ *
+ * @apiErrorExample {json} NotExistOpinion
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 의견입니다."
+ * }
+ */
