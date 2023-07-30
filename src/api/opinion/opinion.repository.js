@@ -20,10 +20,16 @@ exports.getOpinions = async (query) => {
 
     return db.Opinion.findAndCountAll({
         include: [
-            { model: db.OpinionLike }
+            {
+                model: db.User,
+                attributes: {
+                    exclude: ['encryptedPassword'],
+                }
+            },
         ],
         where,
         ...pagination,
+        order: [['createdDate', 'DESC']]
     });
 }
 

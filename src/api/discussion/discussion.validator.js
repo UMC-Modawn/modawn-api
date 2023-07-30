@@ -8,7 +8,7 @@ exports.getDiscussionsValidator = [
 ];
 
 exports.getDiscussionByIdxValidator = [
-    param('idx').isInt({ min: 0 })
+    param('discussionIdx').isInt({ min: 0 })
 ];
 
 exports.addDiscussionBodyValidator = [
