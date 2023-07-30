@@ -55,3 +55,29 @@ exports.getOpinionsCountByDiscussionIdx = async (discussionIdx) => {
         where: { discussionIdx },
     });
 }
+
+exports.getOpinionWithReplyByIdx = async (opinionIdx) => {
+    return db.Opinion.findOne({
+        where: { idx: opinionIdx },
+        include: [
+            {
+                model: db.User,
+                attributes: {
+                    exclude: ['encryptedPassword'],
+                }
+            },
+            {
+                model: db.OpinionReply,
+                include: [
+                    {
+                        model: db.User,
+                        attributes: {
+                            exclude: ['encryptedPassword'],
+                        }
+                    },
+                ],
+                order: [['createdDate', 'ASC']],
+            },
+        ],
+    });
+}

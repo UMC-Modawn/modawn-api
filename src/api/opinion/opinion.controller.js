@@ -25,3 +25,12 @@ exports.getOpinions = async (req, res) => {
         processCatchBlock(e, res);
     }
 }
+
+exports.getOpinionByIdx = async (req, res) => {
+    try {
+        const opinion = await opinionService.getOpinionAllInfoByIdx(req.params.opinionIdx);
+        return res.status(HttpStatus.OK).json(responseSuccessWrapper(opinion));
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}

@@ -1,5 +1,9 @@
 const { getDiscussionByIdxValidator } = require("../discussion/discussion.validator");
-const { query } = require("express-validator");
+const { query, param} = require("express-validator");
+
+exports.getOpinionIdxValidator = [
+    param('opinionIdx').isInt({ min: 0 }),
+];
 
 exports.getOpinionsValidator = [
     query('type').isString().optional(),
