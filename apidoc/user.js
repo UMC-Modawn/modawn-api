@@ -29,7 +29,7 @@
  * @apiBody {string} email 유저 이메일
  * @apiBody {string} password 유저 비밀번호
  *
- * @apiSuccess {boolean} success api 요천 성공 여부
+ * @apiSuccess {boolean} success api 요청 성공 여부
  * @apiSuccess {object} data api 요청 데이터
  * @apiSuccess {string} data.token 유저 토큰
  *

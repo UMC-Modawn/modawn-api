@@ -27,6 +27,7 @@ sequelize.sync({ force: config.ENV === Environment.DEVELOPMENT })
 
 app.use(logger(config.ENV === Environment.DEVELOPMENT ? 'dev' : 'combined'));
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(cors());
 

@@ -28,27 +28,37 @@ OpinionLike.removeAttribute('id');
  */
 /** One to Many : Discussion Category - Discussion */
 DiscussionCategory.hasMany(Discussion, { foreignKey: 'categoryIdx', sourceKey: 'idx' });
+Discussion.belongsTo(DiscussionCategory, { foreignKey: 'categoryIdx', sourceKey: 'idx' });
 
 /** One to Many : User - Discussion */
 User.hasMany(Discussion, { foreignKey: 'userIdx', sourceKey: 'idx' });
+Discussion.belongsTo(User, { foreignKey: 'userIdx', sourceKey: 'idx' });
 
 /** Many to Many : User - Discussion Like - Discussion */
 User.hasMany(DiscussionLike, { foreignKey: 'userIdx', sourceKey: 'idx' });
+DiscussionLike.belongsTo(User, { foreignKey: 'userIdx', sourceKey: 'idx' });
 Discussion.hasMany(DiscussionLike, { foreignKey: 'discussionIdx', sourceKey: 'idx' });
+DiscussionLike.belongsTo(Discussion, { foreignKey: 'discussionIdx', sourceKey: 'idx' });
 
 /** One to Many : Discussion - Opinion */
 Discussion.hasMany(Opinion, { foreignKey: 'discussionIdx', sourceKey: 'idx' });
+Opinion.belongsTo(Discussion, { foreignKey: 'discussionIdx', sourceKey: 'idx' });
 
 /** One to Many : User - Opinion */
 User.hasMany(Opinion, { foreignKey: 'userIdx', sourceKey: 'idx' });
+Opinion.belongsTo(User, { foreignKey: 'userIdx', sourceKey: 'idx' });
 
 /** Many to Many: User - Opinion Reply - Opinion */
 User.hasMany(OpinionReply, { foreignKey: 'userIdx', sourceKey: 'idx' });
+OpinionReply.belongsTo(User, { foreignKey: 'userIdx', sourceKey: 'idx' });
 Opinion.hasMany(OpinionReply, { foreignKey: 'opinionIdx', sourceKey: 'idx' });
+OpinionReply.belongsTo(Opinion, { foreignKey: 'opinionIdx', sourceKey: 'idx' });
 
 /** Many to Many : User - Opinion Like - Opinion */
 User.hasMany(OpinionLike, { foreignKey: 'userIdx', sourceKey: 'idx' });
+OpinionLike.belongsTo(User, { foreignKey: 'userIdx', sourceKey: 'idx' });
 Opinion.hasMany(OpinionLike, { foreignKey: 'opinionIdx', sourceKey: 'idx' });
+OpinionLike.belongsTo(Opinion, { foreignKey: 'opinionIdx', sourceKey: 'idx' });
 
 module.exports = {
     sequelize,
