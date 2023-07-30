@@ -9,6 +9,7 @@ const config = require('./config/config');
 const { sequelize } = require('./models');
 const { Environment } = require("./server.constant");
 const cors = require("cors");
+const {processCatchBlock} = require("./src/util");
 
 sequelize.sync({ force: config.ENV === Environment.DEVELOPMENT })
     .then(() => {
@@ -37,3 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use('/api', require('./src'));
+
+app.use((err, req, res, next) => {
+    processCatchBlock(err, res);
+});

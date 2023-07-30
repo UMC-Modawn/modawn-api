@@ -1,5 +1,9 @@
 const db = require('../../../models');
 
+exports.createInstance = (body) => {
+    return db.Opinion.build(body);
+}
+
 exports.getOpinions = async (query) => {
     const where = {};
     if (query.type) {
@@ -20,10 +24,16 @@ exports.getOpinions = async (query) => {
 
     return db.Opinion.findAndCountAll({
         include: [
-            { model: db.OpinionLike }
+            {
+                model: db.User,
+                attributes: {
+                    exclude: ['encryptedPassword'],
+                }
+            },
         ],
         where,
         ...pagination,
+        order: [['createdDate', 'DESC']]
     });
 }
 
@@ -48,4 +58,45 @@ exports.getOpinionsCountByDiscussionIdx = async (discussionIdx) => {
     return db.Opinion.count({
         where: { discussionIdx },
     });
+}
+
+exports.getOpinionByIdx = async (opinionIdx) => {
+    return db.Opinion.findOne({
+        where: { idx: opinionIdx },
+    });
+}
+
+exports.getOpinionWithReplyByIdx = async (opinionIdx) => {
+    return db.Opinion.findOne({
+        where: { idx: opinionIdx },
+        include: [
+            {
+                model: db.User,
+                attributes: {
+                    exclude: ['encryptedPassword'],
+                }
+            },
+            { model: db.Discussion },
+            {
+                model: db.OpinionReply,
+                include: [
+                    {
+                        model: db.User,
+                        attributes: {
+                            exclude: ['encryptedPassword'],
+                        }
+                    },
+                ],
+                order: [['createdDate', 'ASC']],
+            },
+        ],
+    });
+}
+
+exports.deleteOpinion = async (opinion) => {
+    return opinion.destroy();
+}
+
+exports.updateOpinion = async (opinion) => {
+    return opinion.save();
 }

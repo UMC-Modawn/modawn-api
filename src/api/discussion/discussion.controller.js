@@ -14,7 +14,7 @@ exports.getDiscussions = async (req, res) => {
 
 exports.getDiscussionByIdx = async (req, res) => {
     try {
-        const discussion = await discussionService.getDiscussionByIdx(req.user, req.params.idx);
+        const discussion = await discussionService.getDiscussionByIdx(req.user, req.params.discussionIdx);
         res.status(HttpStatus.OK).json(responseSuccessWrapper(discussion));
     } catch (e) {
         processCatchBlock(e, res);
@@ -23,7 +23,7 @@ exports.getDiscussionByIdx = async (req, res) => {
 
 exports.addDiscussionLike = async (req, res) => {
     try {
-        await discussionLikeService.addDiscussionLike(req.user.idx, req.params.idx);
+        await discussionLikeService.addDiscussionLike(req.user.idx, req.params.discussionIdx);
         return res.status(HttpStatus.CREATED).json(responseSuccessWrapper());
     } catch (e) {
         processCatchBlock(e, res);
@@ -42,7 +42,7 @@ exports.addDiscussion = async (req, res) => {
 
 exports.deleteDiscussion = async (req, res) => {
     try {
-        await discussionService.deleteDiscussion(req.user, req.params.idx);
+        await discussionService.deleteDiscussion(req.user, req.params.discussionIdx);
         return res.status(HttpStatus.OK).json(responseSuccessWrapper());
     } catch (e) {
         processCatchBlock(e, res);
@@ -51,7 +51,7 @@ exports.deleteDiscussion = async (req, res) => {
 
 exports.updateDiscussionStatus = async (req, res) => {
     try {
-        await discussionService.updateDiscussionStatus(req.user, req.params.idx, req.body.status);
+        await discussionService.updateDiscussionStatus(req.user, req.params.discussionIdx, req.body.status);
         return res.status(HttpStatus.OK).json(responseSuccessWrapper());
     } catch (e) {
         processCatchBlock(e, res);
@@ -60,7 +60,7 @@ exports.updateDiscussionStatus = async (req, res) => {
 
 exports.modifyDiscussion = async (req, res) => {
     try {
-        await discussionService.modifyDiscussion(req.user, req.params.idx, req.body);
+        await discussionService.modifyDiscussion(req.user, req.params.discussionIdx, req.body);
         return res.status(HttpStatus.OK).json(responseSuccessWrapper());
     } catch (e) {
         processCatchBlock(e, res);

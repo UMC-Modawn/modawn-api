@@ -69,11 +69,11 @@
  */
 
 /**
- * @apiDefine CannotDeleteDiscussion
+ * @apiDefine CannotDelete
  *
- * @apiError CannotDeleteDiscussion 삭제 권한이 없습니다.
+ * @apiError CannotDelete 삭제 권한이 없습니다.
  *
- * @apiErrorExample {json} CannotDeleteDiscussion
+ * @apiErrorExample {json} CannotDelete
  * HTTP/1.1 403 Forbidden
  * {
  *     "success": false,
@@ -82,14 +82,53 @@
  */
 
 /**
- * @apiDefine CannotUpdateDiscussion
+ * @apiDefine CannotUpdate
  *
- * @apiError CannotUpdateDiscussion 수정 권한이 없습니다.
+ * @apiError CannotUpdate 수정 권한이 없습니다.
  *
- * @apiErrorExample {json} CannotUpdateDiscussion
+ * @apiErrorExample {json} CannotUpdate
  * HTTP/1.1 403 Forbidden
  * {
  *     "success": false,
  *     "message": "수정 권한이 없습니다."
+ * }
+ */
+
+/**
+ * @apiDefine NotExistOpinion
+ *
+ * @apiError NotExistOpinion 존재하지 않는 의견입니다.
+ *
+ * @apiErrorExample {json} NotExistOpinion
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 의견입니다."
+ * }
+ */
+
+/**
+ * @apiDefine NotExistOpinionType
+ *
+ * @apiError NotExistOpinionType 존재하지 않는 의견 타입입니다.
+ *
+ * @apiErrorExample {json} NotExistOpinionType
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 의견 타입입니다."
+ * }
+ */
+
+/**
+ * @apiDefine NotExistOpinionReply
+ *
+ * @apiError NotExistOpinionReply 존재하지 않는 댓글입니다.
+ *
+ * @apiErrorExample {json} NotExistOpinionReply
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 댓글입니다."
  * }
  */
