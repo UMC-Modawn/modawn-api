@@ -57,3 +57,12 @@ exports.updateDiscussionStatus = async (req, res) => {
         processCatchBlock(e, res);
     }
 }
+
+exports.modifyDiscussion = async (req, res) => {
+    try {
+        await discussionService.modifyDiscussion(req.user, req.params.idx, req.body);
+        return res.status(HttpStatus.OK).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}

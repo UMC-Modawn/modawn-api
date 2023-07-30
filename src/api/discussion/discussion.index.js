@@ -10,6 +10,7 @@ router.get('/', getDiscussionsValidator, validatorCheckerMiddleware, discussionC
 router.post('/', userAuthMiddleware, addDiscussionBodyValidator, validatorCheckerMiddleware, discussionController.addDiscussion);
 router.get('/:idx', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.getDiscussionByIdx);
 router.delete('/:idx', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.deleteDiscussion);
+router.put('/:idx', userAuthMiddleware, getDiscussionByIdxValidator, addDiscussionBodyValidator, validatorCheckerMiddleware, discussionController.modifyDiscussion);
 router.post('/:idx/like', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.addDiscussionLike);
 router.put('/:idx/status', userAuthMiddleware, getDiscussionByIdxValidator, validatorCheckerMiddleware, discussionController.updateDiscussionStatus);
 

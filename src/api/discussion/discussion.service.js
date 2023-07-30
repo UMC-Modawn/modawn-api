@@ -101,3 +101,21 @@ exports.updateDiscussionStatus = async (user, discussionIdx, status) => {
 
     return discussionRepository.updateDiscussion(discussion);
 }
+
+exports.modifyDiscussion = async (user, discussionIdx, body) => {
+    const discussion = await this.getExistDiscussionByIdx(discussionIdx);
+
+    if (discussion.userIdx !== user.idx) {
+        throw new RequestException('수정 권한이 없습니다.', HttpStatus.FORBIDDEN);
+    }
+
+    await discussionCategoryService.getDiscussionCategoryByIdx(body.categoryIdx);
+
+    Object.keys(discussion.dataValues).forEach((key) => {
+        if (body[key]) {
+            discussion[key] = body[key];
+        }
+    });
+
+    return discussionRepository.updateDiscussion(discussion);
+}

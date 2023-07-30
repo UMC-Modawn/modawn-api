@@ -288,3 +288,34 @@
  * @apiUse NotExistDiscussion
  * @apiUse CannotUpdateDiscussion
  */
+
+/**
+ * @api {put} /discussion/:discussionIdx 07. 토론 수정
+ * @apiDescription 토론 수정
+ * @apiName modifyDiscussion
+ * @apiGroup Discussion
+ * @apiPermission USER_TOKEN
+ *
+ * @apiHeader {string} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ *
+ * @apiParam {number} discussionIdx 토론 idx
+ *
+ * @apiBody {string} title 토론 제목
+ * @apiBody {string} content 토론 내용
+ * @apiBody {number} categoryIdx 토론 카테고리 idx
+ * @apiBody {string} [url] 토론 참고 링크
+ * @apiBody {string} [imgUrl] 토론 이미지 url
+ * @apiBody {date} endDate 토론 종료일
+ *
+ * @apiSuccess {boolean} success api 요청 성공 여부
+ *
+ * @apiSuccessExample {json} Response (example):
+ * HTTP/1.1 201 Created
+ * {
+ *     "success": true
+ * }
+ *
+ * @apiUse NotExistDiscussion
+ * @apiUse NotExistDiscussionCategory
+ * @apiUse CannotUpdateDiscussion
+ */
