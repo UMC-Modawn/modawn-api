@@ -1,5 +1,6 @@
 const discussionCategoryRepository = require('./discussion-category.repository');
 const RequestException = require("../../error/request.exception");
+const { HttpStatus } = require("../../error/error.constant");
 
 exports.getDiscussionCategories = async () => {
     return discussionCategoryRepository.getDiscussionCategories();

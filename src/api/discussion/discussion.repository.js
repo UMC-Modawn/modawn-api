@@ -24,8 +24,8 @@ exports.getDiscussions = async (query) => {
 
     /** include (join) clause */
     const discussionCategoryJoinWhere = {};
-    if (query.category) {
-        discussionCategoryJoinWhere.type = query.category;
+    if (query.categoryIdx) {
+        discussionCategoryJoinWhere.idx = query.categoryIdx;
     }
 
     return await db.Discussion.findAndCountAll({
@@ -34,8 +34,12 @@ exports.getDiscussions = async (query) => {
                 model: db.DiscussionCategory,
                 where: discussionCategoryJoinWhere,
             },
-            { model: db.User },
-            { model: db.DiscussionLike },
+            {
+                model: db.User,
+                attributes: {
+                    exclude: ['encryptedPassword'],
+                }
+            },
         ],
         where,
         ...pagination,
@@ -49,7 +53,12 @@ exports.getDiscussion = (discussionIdx) => {
     return db.Discussion.findOne({
         include: [
             { model: db.DiscussionCategory },
-            { model: db.User },
+            {
+                model: db.User,
+                attributes: {
+                    exclude: ['encryptedPassword'],
+                }
+            },
         ],
         where: { idx: discussionIdx },
     })

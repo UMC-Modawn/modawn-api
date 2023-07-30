@@ -41,3 +41,55 @@
  *     "message": "아이디 또는 비밀번호가 일치하지 않습니다."
  * }
  */
+
+/**
+ * @apiDefine NotExistDiscussion
+ *
+ * @apiError NotExistDiscussion 존재하지 않는 토론입니다.
+ *
+ * @apiErrorExample {json} NotExistDiscussion
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 토론입니다."
+ * }
+ */
+
+/**
+ * @apiDefine NotExistDiscussionCategory
+ *
+ * @apiError NotExistDiscussionCategory 존재하지 않는 토론 카테고리입니다.
+ *
+ * @apiErrorExample {json} NotExistDiscussionCategory
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 토론 카테고리입니다."
+ * }
+ */
+
+/**
+ * @apiDefine CannotDeleteDiscussion
+ *
+ * @apiError CannotDeleteDiscussion 삭제 권한이 없습니다.
+ *
+ * @apiErrorExample {json} CannotDeleteDiscussion
+ * HTTP/1.1 403 Forbidden
+ * {
+ *     "success": false,
+ *     "message": "삭제 권한이 없습니다."
+ * }
+ */
+
+/**
+ * @apiDefine CannotUpdateDiscussion
+ *
+ * @apiError CannotUpdateDiscussion 수정 권한이 없습니다.
+ *
+ * @apiErrorExample {json} CannotUpdateDiscussion
+ * HTTP/1.1 403 Forbidden
+ * {
+ *     "success": false,
+ *     "message": "수정 권한이 없습니다."
+ * }
+ */
