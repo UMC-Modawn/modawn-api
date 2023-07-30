@@ -1,5 +1,6 @@
 const opinionService = require('./opinion.service');
 const opinionLikeService = require('../opinion-like/opinion-like.service');
+const opinionReplyService = require('../opinion-reply/opinion-reply.service');
 const { HttpStatus } = require("../../error/error.constant");
 const { responseSuccessWrapper, processCatchBlock } = require("../../util");
 
@@ -65,6 +66,24 @@ exports.modifyOpinion = async (req, res) => {
 exports.deleteOpinion = async (req, res) => {
     try {
         await opinionService.deleteOpinion(req.user, req.params.opinionIdx);
+        return res.status(HttpStatus.OK).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}
+
+exports.addOpinionReply = async (req, res) => {
+    try {
+        await opinionReplyService.addOpinionReply(req.user, req.params.opinionIdx, req.body);
+        return res.status(HttpStatus.CREATED).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}
+
+exports.deleteOpinionReply = async (req, res) => {
+    try {
+        await opinionReplyService.deleteOpinionReply(req.user, req.params.opinionIdx, req.params.opinionReplyIdx);
         return res.status(HttpStatus.OK).json(responseSuccessWrapper());
     } catch (e) {
         processCatchBlock(e, res);

@@ -119,3 +119,16 @@
  *     "message": "존재하지 않는 의견 타입입니다."
  * }
  */
+
+/**
+ * @apiDefine NotExistOpinionReply
+ *
+ * @apiError NotExistOpinionReply 존재하지 않는 댓글입니다.
+ *
+ * @apiErrorExample {json} NotExistOpinionReply
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 댓글입니다."
+ * }
+ */

@@ -286,3 +286,58 @@
  * @apiUse NotExistOpinion
  * @apiUse CannotDelete
  */
+
+/**
+ * @api {post} discussion/:discussionIdx/opinion/:opinionIdx/reply 07. 의견 댓글 등록
+ * @apiDescription 의견 댓글 등록
+ * @apiName addOpinionReply
+ * @apiGroup Opinion
+ * @apiPermission USER_TOKEN
+ *
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ *
+ * @apiParam {Number} discussionIdx 토론 idx
+ * @apiParam {Number} opinionIdx 의견 idx
+ *
+ * @apiBody {String=APPROVE,DISAPPROVE,OTHER} type 의견 타입</br>APPROVE: 찬성</br>DISAPPROVE: 반대</br>OTHER: 제3의견
+ * @apiBody {String} content 의견 내용
+ *
+ * @apiSuccess {Boolean} success api 요청 성공 여부
+ *
+ * @apiSuccessExample {json} Response (example):
+ * HTTP/1.1 201 Created
+ * {
+ *     "success": true
+ * }
+ *
+ * @apiUse NotExistDiscussion
+ * @apiUse NotExistOpinion
+ * @apiUse NotExistOpinionType
+ */
+
+/**
+ * @api {delete} discussion/:discussionIdx/opinion/:opinionIdx/reply/:opinionReplyIdx 08. 의견 댓글 삭제
+ * @apiDescription 의견 댓글 삭제
+ * @apiName deleteOpinionReply
+ * @apiGroup Opinion
+ * @apiPermission USER_TOKEN
+ *
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ *
+ * @apiParam {Number} discussionIdx 토론 idx
+ * @apiParam {Number} opinionIdx 의견 idx
+ * @apiParam {Number} opinionReplyIdx 댓글 idx
+ *
+ * @apiSuccess {Boolean} success api 요청 성공 여부
+ *
+ * @apiSuccessExample {json} Response (example):
+ * HTTP/1.1 200 OK
+ * {
+ *     "success": true
+ * }
+ *
+ * @apiUse NotExistDiscussion
+ * @apiUse NotExistOpinion
+ * @apiUse NotExistOpinionReply
+ * @apiUse CannotDelete
+ */
