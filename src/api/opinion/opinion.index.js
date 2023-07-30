@@ -9,6 +9,7 @@ router.get('/', getOpinionsValidator, validatorCheckerMiddleware, opinionControl
 router.post('/', addOpinionValidator, validatorCheckerMiddleware, opinionController.addOpinion);
 router.get('/:opinionIdx', getOpinionIdxValidator, validatorCheckerMiddleware, opinionController.getOpinionByIdx);
 router.put('/:opinionIdx', modifyOpinionValidator, validatorCheckerMiddleware, opinionController.modifyOpinion);
+router.delete('/:opinionIdx', getOpinionIdxValidator, validatorCheckerMiddleware, opinionController.deleteOpinion);
 router.post('/:opinionIdx/like', getOpinionIdxValidator, validatorCheckerMiddleware, opinionController.addOpinionLike);
 
 module.exports = router;

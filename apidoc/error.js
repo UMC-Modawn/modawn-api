@@ -69,11 +69,11 @@
  */
 
 /**
- * @apiDefine CannotDeleteDiscussion
+ * @apiDefine CannotDelete
  *
- * @apiError CannotDeleteDiscussion 삭제 권한이 없습니다.
+ * @apiError CannotDelete 삭제 권한이 없습니다.
  *
- * @apiErrorExample {json} CannotDeleteDiscussion
+ * @apiErrorExample {json} CannotDelete
  * HTTP/1.1 403 Forbidden
  * {
  *     "success": false,

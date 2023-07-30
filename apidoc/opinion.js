@@ -238,7 +238,7 @@
  *
  * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
  *
- * @apiParam {Number} discussionIdx 의견 idx
+ * @apiParam {Number} discussionIdx 토론 idx
  * @apiParam {Number} opinionIdx 의견 idx
  *
  * @apiBody {String} title 의견 제목
@@ -260,4 +260,29 @@
  * @apiUse NotExistDiscussion
  * @apiUse NotExistOpinionType
  * @apiUse CannotUpdate
+ */
+
+/**
+ * @api {delete} discussion/:discussionIdx/opinion/:opinionIdx 06. 의견 삭제
+ * @apiDescription 의견 삭제
+ * @apiName deleteOpinion
+ * @apiGroup Opinion
+ * @apiPermission USER_TOKEN
+ *
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ *
+ * @apiParam {Number} discussionIdx 토론 idx
+ * @apiParam {Number} opinionIdx 의견 idx
+ *
+ * @apiSuccess {Boolean} success api 요청 성공 여부
+ *
+ * @apiSuccessExample {json} Response (example):
+ * HTTP/1.1 200 OK
+ * {
+ *     "success": true
+ * }
+ *
+ * @apiUse NotExistDiscussion
+ * @apiUse NotExistOpinion
+ * @apiUse CannotDelete
  */

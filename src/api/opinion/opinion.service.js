@@ -83,3 +83,12 @@ exports.modifyOpinion = async (user, opinionIdx, body) => {
 
     return opinionRepository.updateOpinion(opinion);
 }
+
+exports.deleteOpinion = async (user, opinionIdx) => {
+    const opinion = await this.getOpinionByIdx(opinionIdx);
+    if (opinion.userIdx !== user.idx) {
+        throw new RequestException('삭제 권한이 없습니다.', HttpStatus.FORBIDDEN);
+    }
+
+    return opinionRepository.deleteOpinion(opinion);
+}

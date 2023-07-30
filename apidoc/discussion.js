@@ -261,7 +261,7 @@
  * }
  *
  * @apiUse NotExistDiscussion
- * @apiUse CannotDeleteDiscussion
+ * @apiUse CannotDelete
  */
 
 /**

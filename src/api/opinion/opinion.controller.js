@@ -61,3 +61,12 @@ exports.modifyOpinion = async (req, res) => {
         processCatchBlock(e, res);
     }
 }
+
+exports.deleteOpinion = async (req, res) => {
+    try {
+        await opinionService.deleteOpinion(req.user, req.params.opinionIdx);
+        return res.status(HttpStatus.OK).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}
