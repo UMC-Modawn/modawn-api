@@ -7,5 +7,6 @@ const { getOpinionsValidator, getOpinionIdxValidator} = require("./opinion.valid
 
 router.get('/', getOpinionsValidator, validatorCheckerMiddleware, opinionController.getOpinions);
 router.get('/:opinionIdx', getOpinionIdxValidator, validatorCheckerMiddleware, opinionController.getOpinionByIdx);
+router.post('/:opinionIdx/like', getOpinionIdxValidator, validatorCheckerMiddleware, opinionController.addOpinionLike);
 
 module.exports = router;

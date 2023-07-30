@@ -33,3 +33,12 @@ exports.getOpinionAllInfoByIdx = async (opinionIdx) => {
         opinionLikeCount
     };
 }
+
+exports.getOpinionByIdx = async (opinionIdx) => {
+    const opinion = await opinionRepository.getOpinionByIdx(opinionIdx);
+    if (!opinion) {
+        throw new RequestException('존재하지 않는 의견입니다.', HttpStatus.BAD_REQUEST);
+    }
+
+    return opinion;
+}

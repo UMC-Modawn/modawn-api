@@ -56,6 +56,12 @@ exports.getOpinionsCountByDiscussionIdx = async (discussionIdx) => {
     });
 }
 
+exports.getOpinionByIdx = async (opinionIdx) => {
+    return db.Opinion.findOne({
+        where: { idx: opinionIdx },
+    });
+}
+
 exports.getOpinionWithReplyByIdx = async (opinionIdx) => {
     return db.Opinion.findOne({
         where: { idx: opinionIdx },

@@ -34,3 +34,12 @@ exports.getOpinionByIdx = async (req, res) => {
         processCatchBlock(e, res);
     }
 }
+
+exports.addOpinionLike = async (req, res) => {
+    try {
+        await opinionLikeService.addOpinionLike(req.user.idx, req.params.opinionIdx);
+        return res.status(HttpStatus.CREATED).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}

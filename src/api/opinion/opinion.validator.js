@@ -1,4 +1,3 @@
-const { getDiscussionByIdxValidator } = require("../discussion/discussion.validator");
 const { query, param} = require("express-validator");
 
 exports.getOpinionIdxValidator = [
