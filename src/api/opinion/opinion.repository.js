@@ -72,6 +72,7 @@ exports.getOpinionWithReplyByIdx = async (opinionIdx) => {
                     exclude: ['encryptedPassword'],
                 }
             },
+            { model: db.Discussion },
             {
                 model: db.OpinionReply,
                 include: [

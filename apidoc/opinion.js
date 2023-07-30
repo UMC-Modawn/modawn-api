@@ -95,6 +95,7 @@
  * @apiSuccess {Date} data.createdDate 의견 작성일
  * @apiSuccess {Date} data.modifiedDate 의견 수정일
  * @apiSuccess {Object} data.user 작성자 정보
+ * @apiSuccess {Object} data.discussion 토론 정보
  * @apiSuccess {Object[]} data.opinion_replies 댓글 목록
  * @apiSuccess {Number} data.opinion_replies.idx 댓글 idx
  * @apiSuccess {Number} data.opinion_replies.opinionIdx 의견 idx
@@ -130,6 +131,20 @@
  *             "nickname": "호지1",
  *             "createdDate": "2023-07-29T07:11:40.000Z",
  *             "modifiedDate": "2023-07-29T07:11:40.000Z"
+ *         },
+ *         "discussion": {
+ *             "idx": 4,
+ *             "categoryIdx": 3,
+ *             "userIdx": 1,
+ *             "title": "t4",
+ *             "content": "c4",
+ *             "status": "DISCUSS",
+ *             "url": null,
+ *             "imgUrl": null,
+ *             "startDate": "2023-07-28T00:01:47.000Z",
+ *             "endDate": "2023-07-28T00:01:47.000Z",
+ *             "createdDate": "2023-07-28T00:01:47.000Z",
+ *             "modifiedDate": "2023-07-28T00:01:47.000Z"
  *         },
  *         "opinion_replies": [
  *             {
