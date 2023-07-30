@@ -286,7 +286,7 @@
  * }
  *
  * @apiUse NotExistDiscussion
- * @apiUse CannotUpdateDiscussion
+ * @apiUse CannotUpdate
  */
 
 /**
@@ -317,5 +317,5 @@
  *
  * @apiUse NotExistDiscussion
  * @apiUse NotExistDiscussionCategory
- * @apiUse CannotUpdateDiscussion
+ * @apiUse CannotUpdate
  */

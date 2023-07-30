@@ -1,5 +1,9 @@
 const db = require('../../../models');
 
+exports.createInstance = (body) => {
+    return db.Opinion.build(body);
+}
+
 exports.getOpinions = async (query) => {
     const where = {};
     if (query.type) {
@@ -87,4 +91,12 @@ exports.getOpinionWithReplyByIdx = async (opinionIdx) => {
             },
         ],
     });
+}
+
+exports.deleteOpinion = async (opinion) => {
+    return opinion.destroy();
+}
+
+exports.updateOpinion = async (opinion) => {
+    return opinion.save();
 }

@@ -43,3 +43,21 @@ exports.addOpinionLike = async (req, res) => {
         processCatchBlock(e, res);
     }
 }
+
+exports.addOpinion = async (req, res) => {
+    try {
+        await opinionService.addOpinion(req.user, req.discussion, req.body);
+        return res.status(HttpStatus.CREATED).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}
+
+exports.modifyOpinion = async (req, res) => {
+    try {
+        await opinionService.modifyOpinion(req.user, req.params.opinionIdx, req.body);
+        return res.status(HttpStatus.OK).json(responseSuccessWrapper());
+    } catch (e) {
+        processCatchBlock(e, res);
+    }
+}

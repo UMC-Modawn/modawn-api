@@ -82,11 +82,11 @@
  */
 
 /**
- * @apiDefine CannotUpdateDiscussion
+ * @apiDefine CannotUpdate
  *
- * @apiError CannotUpdateDiscussion 수정 권한이 없습니다.
+ * @apiError CannotUpdate 수정 권한이 없습니다.
  *
- * @apiErrorExample {json} CannotUpdateDiscussion
+ * @apiErrorExample {json} CannotUpdate
  * HTTP/1.1 403 Forbidden
  * {
  *     "success": false,
@@ -104,5 +104,18 @@
  * {
  *     "success": false,
  *     "message": "존재하지 않는 의견입니다."
+ * }
+ */
+
+/**
+ * @apiDefine NotExistOpinionType
+ *
+ * @apiError NotExistOpinionType 존재하지 않는 의견 타입입니다.
+ *
+ * @apiErrorExample {json} NotExistOpinionType
+ * HTTP/1.1 400 Bad Request
+ * {
+ *     "success": false,
+ *     "message": "존재하지 않는 의견 타입입니다."
  * }
  */

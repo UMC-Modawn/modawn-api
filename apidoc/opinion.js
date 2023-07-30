@@ -197,3 +197,67 @@
  * @apiUse NotExistDiscussion
  * @apiUse NotExistOpinion
  */
+
+/**
+ * @api {post} /discussion/:discussionIdx/opinion 04. 의견 등록
+ * @apiDescription 의견 등록
+ * @apiName addOpinion
+ * @apiGroup Opinion
+ * @apiPermission USER_TOKEN
+ *
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ *
+ * @apiParam {Number} discussionIdx 토론 idx
+ *
+ * @apiBody {String} title 의견 제목
+ * @apiBody {String=APPROVE,DISAPPROVE,OTHER} type 의견 타입</br>APPROVE: 찬성</br>DISAPPROVE: 반대</br>OTHER: 제3의견
+ * @apiBody {String} assert 의견 주장
+ * @apiBody {String} reason 의견 근거
+ * @apiBody {String} content 의견 내용
+ * @apiBody {String} [url] 의견 참고 링크
+ * @apiBody {String} [imgUrl] 의견 이미지 url
+ *
+ * @apiSuccess {Boolean} success api 요청 성공 여부
+ *
+ * @apiSuccessExample {json} Response (example):
+ * HTTP/1.1 201 Created
+ * {
+ *     "success": true
+ * }
+ *
+ * @apiUse NotExistDiscussion
+ * @apiUse NotExistOpinionType
+ */
+
+/**
+ * @api {put} discussion/:discussionIdx/opinion/:opinionIdx 05. 의견 수정
+ * @apiDescription 의견 수정
+ * @apiName modifyOpinion
+ * @apiGroup Opinion
+ * @apiPermission USER_TOKEN
+ *
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ *
+ * @apiParam {Number} discussionIdx 의견 idx
+ * @apiParam {Number} opinionIdx 의견 idx
+ *
+ * @apiBody {String} title 의견 제목
+ * @apiBody {String=APPROVE,DISAPPROVE,OTHER} type 의견 타입</br>APPROVE: 찬성</br>DISAPPROVE: 반대</br>OTHER: 제3의견
+ * @apiBody {String} assert 의견 주장
+ * @apiBody {String} reason 의견 근거
+ * @apiBody {String} content 의견 내용
+ * @apiBody {String} [url] 의견 참고 링크
+ * @apiBody {String} [imgUrl] 의견 이미지 url
+ *
+ * @apiSuccess {Boolean} success api 요청 성공 여부
+ *
+ * @apiSuccessExample {json} Response (example):
+ * HTTP/1.1 200 OK
+ * {
+ *     "success": true
+ * }
+ *
+ * @apiUse NotExistDiscussion
+ * @apiUse NotExistOpinionType
+ * @apiUse CannotUpdate
+ */

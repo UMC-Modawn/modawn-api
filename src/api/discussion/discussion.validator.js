@@ -15,7 +15,7 @@ exports.addDiscussionBodyValidator = [
     body('title').isString(),
     body('content').isString(),
     body('categoryIdx').isInt({ min: 0 }),
-    body('url').isString().optional(),
-    body('imgUrl').isString().optional(),
+    body('url').isString().optional({ values: 'null' }),
+    body('imgUrl').isString().optional({ values: 'null' }),
     body('endDate').isDate(),
 ]
