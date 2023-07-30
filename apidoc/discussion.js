@@ -5,36 +5,36 @@
  * @apiGroup Discussion
  * @apiPermission none
  *
- * @apiQuery {number} [categoryIdx] 토론 카테고리 idx
- * @apiQuery {string} [searchTerm] 검색어
- * @apiQuery {number} [offset] 토론 목록 조회 시작점
- * @apiQuery {number} [limit] 토론 목록 조회 갯수
+ * @apiQuery {Number} [categoryIdx] 토론 카테고리 idx
+ * @apiQuery {String} [searchTerm] 검색어
+ * @apiQuery {Number} [offset] 토론 목록 조회 시작점
+ * @apiQuery {Number} [limit] 토론 목록 조회 갯수
  *
- * @apiSuccess {boolean} success api 요청 성공 여부
- * @apiSuccess {object} data api 요청 데이터
- * @apiSuccess {number} data.count 토론 목록 총 갯수
- * @apiSuccess {object[]} data.rows 토론 목록
- * @apiSuccess {number} data.rows.idx 토론 idx
- * @apiSuccess {number} data.rows.categoryIdx 토론 카테고리 idx
- * @apiSuccess {number} data.rows.userIdx 토론 작성자 idx
- * @apiSuccess {string} data.rows.title 토론 제목
- * @apiSuccess {string} data.rows.content 토론 내용
- * @apiSuccess {string=DISCUSS,CLOSE} data.rows.status 토론 상태</br>DISCUSS: 토론 진행중</br>CLOSE: 토론 종료
- * @apiSuccess {string} data.rows.url 토론 참고 링크
- * @apiSuccess {string} data.rows.imgUrl 토론 이미지 링크
- * @apiSuccess {string} data.rows.startDate 토론 시작일
- * @apiSuccess {string} data.rows.endDate 토론 종료일
- * @apiSuccess {string} data.rows.createdDate 토론 생성일
- * @apiSuccess {string} data.rows.modifiedDate 토론 수정일
- * @apiSuccess {object} data.rows.discussion_category 토론 카테고리
- * @apiSuccess {number} data.rows.discussion_category.idx 토론 카테고리 idx
- * @apiSuccess {string} data.rows.discussion_category.type 토론 카테고리 타입
- * @apiSuccess {object} data.rows.user 토론 작성자
- * @apiSuccess {number} data.rows.user.idx 토론 작성자 idx
- * @apiSuccess {string} data.rows.user.email 토론 작성자 이메일
- * @apiSuccess {string} data.rows.user.name 토론 작성자 이름
- * @apiSuccess {string} data.rows.user.nickname 토론 작성자 닉네임
- * @apiSuccess {string} data.rows.discussionLikeCount 토론 좋아요 갯수
+ * @apiSuccess {Boolean} success api 요청 성공 여부
+ * @apiSuccess {Object} data api 요청 데이터
+ * @apiSuccess {Number} data.count 토론 목록 총 갯수
+ * @apiSuccess {Object[]} data.rows 토론 목록
+ * @apiSuccess {Number} data.rows.idx 토론 idx
+ * @apiSuccess {Number} data.rows.categoryIdx 토론 카테고리 idx
+ * @apiSuccess {Number} data.rows.userIdx 토론 작성자 idx
+ * @apiSuccess {String} data.rows.title 토론 제목
+ * @apiSuccess {String} data.rows.content 토론 내용
+ * @apiSuccess {String=DISCUSS,CLOSE} data.rows.status 토론 상태</br>DISCUSS: 토론 진행중</br>CLOSE: 토론 종료
+ * @apiSuccess {String} data.rows.url 토론 참고 링크
+ * @apiSuccess {String} data.rows.imgUrl 토론 이미지 링크
+ * @apiSuccess {String} data.rows.startDate 토론 시작일
+ * @apiSuccess {String} data.rows.endDate 토론 종료일
+ * @apiSuccess {String} data.rows.createdDate 토론 생성일
+ * @apiSuccess {String} data.rows.modifiedDate 토론 수정일
+ * @apiSuccess {Object} data.rows.discussion_category 토론 카테고리
+ * @apiSuccess {Number} data.rows.discussion_category.idx 토론 카테고리 idx
+ * @apiSuccess {String} data.rows.discussion_category.type 토론 카테고리 타입
+ * @apiSuccess {Object} data.rows.user 토론 작성자
+ * @apiSuccess {Number} data.rows.user.idx 토론 작성자 idx
+ * @apiSuccess {String} data.rows.user.email 토론 작성자 이메일
+ * @apiSuccess {String} data.rows.user.name 토론 작성자 이름
+ * @apiSuccess {String} data.rows.user.nickname 토론 작성자 닉네임
+ * @apiSuccess {String} data.rows.discussionLikeCount 토론 좋아요 갯수
  *
  * @apiSuccessExample {json} Response (example):
  * HTTP/1.1 200 OK
@@ -82,41 +82,41 @@
  * @apiGroup Discussion
  * @apiPermission USER_TOKEN
  *
- * @apiHeader {string} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
  *
- * @apiParam {number} discussionIdx 토론 idx
+ * @apiParam {Number} discussionIdx 토론 idx
  *
- * @apiSuccess {boolean} success api 요청 성공 여부
- * @apiSuccess {object} data api 요청 데이터
- * @apiSuccess {number} data.discussion 토론 정보
- * @apiSuccess {number} data.discussion.idx 토론 idx
- * @apiSuccess {number} data.discussion.categoryIdx 토론 카테고리 idx
- * @apiSuccess {number} data.discussion.userIdx 토론 작성자 idx
- * @apiSuccess {string} data.discussion.title 토론 제목
- * @apiSuccess {string} data.discussion.content 토론 내용
- * @apiSuccess {string=DISCUSS,CLOSE} data.discussion.status 토론 상태</br>DISCUSS: 토론 진행중</br>CLOSE: 토론 종료
- * @apiSuccess {string} data.discussion.url 토론 참고 링크
- * @apiSuccess {string} data.discussion.imgUrl 토론 이미지 링크
- * @apiSuccess {string} data.discussion.startDate 토론 시작일
- * @apiSuccess {string} data.discussion.endDate 토론 종료일
- * @apiSuccess {string} data.discussion.createdDate 토론 생성일
- * @apiSuccess {string} data.discussion.modifiedDate 토론 수정일
- * @apiSuccess {object} data.discussion.discussion_category 토론 카테고리
- * @apiSuccess {number} data.discussion.discussion_category.idx 토론 카테고리 idx
- * @apiSuccess {string} data.discussion.discussion_category.type 토론 카테고리 타입
- * @apiSuccess {object} data.discussion.user 토론 작성자
- * @apiSuccess {number} data.discussion.user.idx 토론 작성자 idx
- * @apiSuccess {string} data.discussion.user.email 토론 작성자 이메일
- * @apiSuccess {string} data.discussion.user.name 토론 작성자 이름
- * @apiSuccess {string} data.discussion.user.nickname 토론 작성자 닉네임
- * @apiSuccess {string} data.discussion.opinionApproves 토론 찬성 의견
- * @apiSuccess {string} data.discussion.opinionApproves.idx 토론 찬성 의견 idx
- * @apiSuccess {string} data.discussion.opinionApproves.title 토론 찬성 의견 제목
- * @apiSuccess {string} data.discussion.opinionApproves.likeCount 토론 찬성 의견 좋아요 갯수
- * @apiSuccess {string} data.discussion.opinionDisapproves 토론 반대 의견
- * @apiSuccess {string} data.discussion.opinionOthers 토론 기타 의견
- * @apiSuccess {string} data.discussion.userDiscussionLike 토론 좋아요 여부
- * @apiSuccess {string} data.discussion.discussionLikeCount 토론 좋아요 갯수
+ * @apiSuccess {Boolean} success api 요청 성공 여부
+ * @apiSuccess {Object} data api 요청 데이터
+ * @apiSuccess {Object} data.discussion 토론 정보
+ * @apiSuccess {Number} data.discussion.idx 토론 idx
+ * @apiSuccess {Number} data.discussion.categoryIdx 토론 카테고리 idx
+ * @apiSuccess {Number} data.discussion.userIdx 토론 작성자 idx
+ * @apiSuccess {String} data.discussion.title 토론 제목
+ * @apiSuccess {String} data.discussion.content 토론 내용
+ * @apiSuccess {String=DISCUSS,CLOSE} data.discussion.status 토론 상태</br>DISCUSS: 토론 진행중</br>CLOSE: 토론 종료
+ * @apiSuccess {String} data.discussion.url 토론 참고 링크
+ * @apiSuccess {String} data.discussion.imgUrl 토론 이미지 링크
+ * @apiSuccess {String} data.discussion.startDate 토론 시작일
+ * @apiSuccess {String} data.discussion.endDate 토론 종료일
+ * @apiSuccess {String} data.discussion.createdDate 토론 생성일
+ * @apiSuccess {String} data.discussion.modifiedDate 토론 수정일
+ * @apiSuccess {Object} data.discussion.discussion_category 토론 카테고리
+ * @apiSuccess {Number} data.discussion.discussion_category.idx 토론 카테고리 idx
+ * @apiSuccess {String} data.discussion.discussion_category.type 토론 카테고리 타입
+ * @apiSuccess {Object} data.discussion.user 토론 작성자
+ * @apiSuccess {Number} data.discussion.user.idx 토론 작성자 idx
+ * @apiSuccess {String} data.discussion.user.email 토론 작성자 이메일
+ * @apiSuccess {String} data.discussion.user.name 토론 작성자 이름
+ * @apiSuccess {String} data.discussion.user.nickname 토론 작성자 닉네임
+ * @apiSuccess {Object} data.discussion.opinionApproves 토론 찬성 의견
+ * @apiSuccess {String} data.discussion.opinionApproves.idx 토론 찬성 의견 idx
+ * @apiSuccess {String} data.discussion.opinionApproves.title 토론 찬성 의견 제목
+ * @apiSuccess {String} data.discussion.opinionApproves.likeCount 토론 찬성 의견 좋아요 갯수
+ * @apiSuccess {Object} data.discussion.opinionDisapproves 토론 반대 의견
+ * @apiSuccess {Object} data.discussion.opinionOthers 토론 기타 의견
+ * @apiSuccess {String} data.discussion.userDiscussionLike 토론 좋아요 여부
+ * @apiSuccess {String} data.discussion.discussionLikeCount 토론 좋아요 갯수
  *
  *
  * @apiSuccessExample {json} Response (example):
@@ -201,11 +201,11 @@
  * @apiGroup Discussion
  * @apiPermission USER_TOKEN
  *
- * @apiHeader {string} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
  *
- * @apiParam {number} discussionIdx 토론 idx
+ * @apiParam {Number} discussionIdx 토론 idx
  *
- * @apiSuccess {boolean} success api 요청 성공 여부
+ * @apiSuccess {Boolean} success api 요청 성공 여부
  *
  * @apiSuccessExample {json} Response (example):
  * HTTP/1.1 201 Created
@@ -221,16 +221,16 @@
  * @apiGroup Discussion
  * @apiPermission USER_TOKEN
  *
- * @apiHeader {string} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
  *
- * @apiBody {string} title 토론 제목
- * @apiBody {string} content 토론 내용
- * @apiBody {number} categoryIdx 토론 카테고리 idx
- * @apiBody {string} [url] 토론 참고 링크
- * @apiBody {string} [imgUrl] 토론 이미지 url
- * @apiBody {date} endDate 토론 종료일
+ * @apiBody {String} title 토론 제목
+ * @apiBody {String} content 토론 내용
+ * @apiBody {Number} categoryIdx 토론 카테고리 idx
+ * @apiBody {String} [url] 토론 참고 링크
+ * @apiBody {String} [imgUrl] 토론 이미지 url
+ * @apiBody {Date} endDate 토론 종료일
  *
- * @apiSuccess {boolean} success api 요청 성공 여부
+ * @apiSuccess {Boolean} success api 요청 성공 여부
  *
  * @apiSuccessExample {json} Response (example):
  * HTTP/1.1 201 Created
@@ -248,11 +248,11 @@
  * @apiGroup Discussion
  * @apiPermission USER_TOKEN
  *
- * @apiHeader {string} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
  *
- * @apiParam {number} discussionIdx 토론 idx
+ * @apiParam {Number} discussionIdx 토론 idx
  *
- * @apiSuccess {boolean} success api 요청 성공 여부
+ * @apiSuccess {Boolean} success api 요청 성공 여부
  *
  * @apiSuccessExample {json} Response (example):
  * HTTP/1.1 200 OK
@@ -271,13 +271,13 @@
  * @apiGroup Discussion
  * @apiPermission USER_TOKEN
  *
- * @apiHeader {string} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
  *
- * @apiParam {number} discussionIdx 토론 idx
+ * @apiParam {Number} discussionIdx 토론 idx
  *
- * @apiBody {string=DISCUSS,CLOSE} status 토론 상태
+ * @apiBody {String=DISCUSS,CLOSE} status 토론 상태
  *
- * @apiSuccess {boolean} success api 요청 성공 여부
+ * @apiSuccess {Boolean} success api 요청 성공 여부
  *
  * @apiSuccessExample {json} Response (example):
  * HTTP/1.1 200 OK
@@ -296,18 +296,18 @@
  * @apiGroup Discussion
  * @apiPermission USER_TOKEN
  *
- * @apiHeader {string} Authorization user 토큰</br>ex) Bearer USER_TOKEN
+ * @apiHeader {String} Authorization user 토큰</br>ex) Bearer USER_TOKEN
  *
- * @apiParam {number} discussionIdx 토론 idx
+ * @apiParam {Number} discussionIdx 토론 idx
  *
- * @apiBody {string} title 토론 제목
- * @apiBody {string} content 토론 내용
- * @apiBody {number} categoryIdx 토론 카테고리 idx
- * @apiBody {string} [url] 토론 참고 링크
- * @apiBody {string} [imgUrl] 토론 이미지 url
- * @apiBody {date} endDate 토론 종료일
+ * @apiBody {String} title 토론 제목
+ * @apiBody {String} content 토론 내용
+ * @apiBody {Number} categoryIdx 토론 카테고리 idx
+ * @apiBody {String} [url] 토론 참고 링크
+ * @apiBody {String} [imgUrl] 토론 이미지 url
+ * @apiBody {Date} endDate 토론 종료일
  *
- * @apiSuccess {boolean} success api 요청 성공 여부
+ * @apiSuccess {Boolean} success api 요청 성공 여부
  *
  * @apiSuccessExample {json} Response (example):
  * HTTP/1.1 201 Created
