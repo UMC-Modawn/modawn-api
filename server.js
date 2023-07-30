@@ -1,6 +1,7 @@
 require('dotenv').config({ path: '.env' });
 const express = require('express');
 const app = express();
+const fs = require('fs');
 
 const logger = require('morgan');
 
@@ -25,7 +26,11 @@ sequelize.sync({ force: config.ENV === Environment.DEVELOPMENT })
         console.error(err);
     });
 
-app.use(logger(config.ENV === Environment.DEVELOPMENT ? 'dev' : 'combined'));
+const logCurrentDate = new Date();
+const logFileName = './logs/log-' + logCurrentDate.getFullYear() + '-' + (logCurrentDate.getMonth() + 1) + '-' + logCurrentDate.getDate() + '.log';
+app.use(logger('combined', { stream: fs.createWriteStream(logFileName, { flags: 'a' }) }));
+app.use(logger('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
