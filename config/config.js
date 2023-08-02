@@ -12,4 +12,10 @@ module.exports = {
 
     // jwt config
     JWT_SECRET: process.env.JWT_SECRET,
+
+    AWS_REGION: process.env.AWS_REGION,
+    AWS_ACCESS_KEY: process.env.AWS_ACCESS_KEY,
+    AWS_SECRET_ACCESS_KEY: process.env.AWS_SECRET_ACCESS_KEY,
+
+    AWS_MODAWN_S3_BUCKET_NAME: process.env.AWS_MODAWN_S3_BUCKET_NAME,
 };
