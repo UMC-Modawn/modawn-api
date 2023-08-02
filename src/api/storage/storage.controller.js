@@ -1,4 +1,6 @@
+const { HttpStatus } = require("../../error/error.constant");
+const { responseSuccessWrapper } = require("../../util");
+
 exports.imageUpload = async (req, res) => {
-    console.log(req.file);
-    res.send('done');
+    res.status(HttpStatus.CREATED).json(responseSuccessWrapper({ url: req.file.location }));
 }

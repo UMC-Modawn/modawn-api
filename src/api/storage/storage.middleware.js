@@ -17,10 +17,12 @@ exports.upload = multer({
     storage: multerS3({
         s3,
         bucket: config.AWS_MODAWN_S3_BUCKET_NAME,
+        contentType: multerS3.AUTO_CONTENT_TYPE,
         acl: 'public-read-write',
         key: (req, file, cb) => {
             const extension = path.extname(file.originalname);
-            cb(null, `test/${randomUUID({ disableEntropyCache: false })}.${extension}`);
+            const fileName = `${randomUUID({ disableEntropyCache: false })}${extension}`;
+            cb(null, fileName);
         }
     }),
 });
