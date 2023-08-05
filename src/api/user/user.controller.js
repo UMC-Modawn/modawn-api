@@ -31,5 +31,5 @@ exports.getUserInfo = async (req, res) => {
 
     delete user.encryptedPassword;
 
-    res.status(HttpStatus.OK).json(responseSuccessWrapper(req.user));
+    res.status(HttpStatus.OK).json(responseSuccessWrapper({ user }));
 }
