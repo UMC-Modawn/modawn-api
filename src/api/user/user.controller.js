@@ -25,3 +25,11 @@ exports.userLogin = async (req, res) => {
         processCatchBlock(e, res);
     }
 }
+
+exports.getUserInfo = async (req, res) => {
+    const user = req.user;
+
+    delete user.encryptedPassword;
+
+    res.status(HttpStatus.OK).json(responseSuccessWrapper({ user }));
+}
